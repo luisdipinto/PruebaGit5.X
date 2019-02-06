@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.05 build -831301201 
-                                                                                               Wed Feb 06 16:16:41 2019
+                                                                                               Wed Feb 06 16:21:04 2019
 
 Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1 
      1                           	processor	18F27K42
@@ -119,7 +119,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
    105 ;;
    106 ;; *************** function _main *****************
    107 ;; Defined at:
-   108 ;;		line 49 in file "main.c"
+   108 ;;		line 4 in file "main.c"
    109 ;; Parameters:    Size  Location     Type
    110 ;;		None
    111 ;; Auto vars:     Size  Location     Type
@@ -162,13 +162,13 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
    138  01FF64                     _main:
    139                           	opt callstack 29
    140                           
-   141                           ;main.c: 52:     SYSTEM_Initialize();
+   141                           ;main.c: 7:     SYSTEM_Initialize();
    142                           
    143                           ;incstack = 0
    144  01FF64  ECB8  F0FF         	call	_SYSTEM_Initialize	;wreg free
    145  01FF68                     l7:
    146                           
-   147                           ;main.c: 65:     {;main.c: 68:     }
+   147                           ;main.c: 20:     {;main.c: 24:     }
    148  01FF68  D7FF               	goto	l7
    149  01FF6A                     __end_of_main:
    150                           	opt callstack 0
@@ -867,7 +867,7 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.05 build -831301201 
-Symbol Table                                                                                   Wed Feb 06 16:16:41 2019
+Symbol Table                                                                                   Wed Feb 06 16:21:04 2019
 
                               l7 FF68                      __CFG_CP$OFF 000000  
                     __CFG_LVP$ON 000000          __size_of_PMD_Initialize 0024  

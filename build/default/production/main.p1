@@ -2125,30 +2125,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f27k42.h: 46069: __asm("TOSU equ 03FFFh");
 [; <" TOSU equ 03FFFh ;# ">
 [v $root$_main `(v ~T0 @X0 0 e ]
-"49 main.c
-[; ;main.c: 49: void main(void)
+"4 main.c
+[; ;main.c: 4: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"50
-[; ;main.c: 50: {
+"5
+[; ;main.c: 5: {
 {
 [e :U _main ]
 [f ]
-"52
-[; ;main.c: 52:     SYSTEM_Initialize();
+"7
+[; ;main.c: 7:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"64
-[; ;main.c: 64:     while (1)
+"19
+[; ;main.c: 19:     while (1)
 [e :U 2135 ]
-"65
-[; ;main.c: 65:     {
+"20
+[; ;main.c: 20:     {
 {
-"68
-[; ;main.c: 68:     }
+"24
+[; ;main.c: 24:     }
 }
 [e :U 2134 ]
 [e $U 2135  ]
 [e :U 2136 ]
-"69
-[; ;main.c: 69: }
+"25
+[; ;main.c: 25: }
 [e :UE 2133 ]
 }

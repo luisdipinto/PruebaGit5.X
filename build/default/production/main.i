@@ -7,7 +7,7 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 44 "main.c"
+
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
@@ -25633,19 +25633,17 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 94 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 44 "main.c" 2
-
-
-
+# 2 "main.c" 2
 
 
 void main(void)
 {
 
     SYSTEM_Initialize();
-# 64 "main.c"
+# 19 "main.c"
     while (1)
     {
+
 
 
     }

@@ -27,7 +27,7 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"49 C:\Users\Martin\Documents\Pruebas en General\PruebaGit5.X\main.c
+"4 C:\Users\Martin\Documents\Pruebas en General\PruebaGit5.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "50 C:\Users\Martin\Documents\Pruebas en General\PruebaGit5.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -101,10 +101,10 @@
 [v _TRISB TRISB `VEuc  1 e 1 @16323 ]
 "44278
 [v _TRISC TRISC `VEuc  1 e 1 @16324 ]
-"49 C:\Users\Martin\Documents\Pruebas en General\PruebaGit5.X\main.c
+"4 C:\Users\Martin\Documents\Pruebas en General\PruebaGit5.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"69
+"25
 } 0
 "50 C:\Users\Martin\Documents\Pruebas en General\PruebaGit5.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]

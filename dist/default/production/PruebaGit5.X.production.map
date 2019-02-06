@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.05\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\PruebaGit5.X.production.sym \
   --cmf=dist/default/production\PruebaGit5.X.production.cmf -z -Q18F27K42 \
-  -oC:\Users\Martin\AppData\Local\Temp\sb98.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\Martin\AppData\Local\Temp\s570.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/PruebaGit5.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-01FFFh -pstack=STACK -ACODE=00h-01FFFFh \
   -ACONST=00h-01FFFFh -ASMALLCONST=02000h-020FFhx480 \
@@ -31,7 +31,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Martin\AppData\Local\Temp\sb98.o \
+  C:\Users\Martin\AppData\Local\Temp\s570.o \
   dist/default/production\PruebaGit5.X.production.o 
 
 Object code version is 3.11
@@ -44,7 +44,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Martin\AppData\Local\Temp\sb98.o
+C:\Users\Martin\AppData\Local\Temp\s570.o
                 init                              1FFFC    1FFFC        4     FFFE       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000       10   200000       0
@@ -505,7 +505,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 49 in file "main.c"
+		line 4 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
