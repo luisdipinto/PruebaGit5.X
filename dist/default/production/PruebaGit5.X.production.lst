@@ -1,0 +1,927 @@
+
+
+Microchip MPLAB XC8 Assembler V2.05 build -831301201 
+                                                                                               Wed Feb 06 16:02:42 2019
+
+Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1 
+     1                           	processor	18F27K42
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	flic
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    12                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    13                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    14  0000                     
+    15                           ; Version 2.05
+    16                           ; Generated 20/12/2018 GMT
+    17                           ; 
+    18                           ; Copyright © 2018, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    19                           ; All rights reserved.
+    20                           ; 
+    21                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    22                           ; 
+    23                           ; Redistribution and use in source and binary forms, with or without modification, are
+    24                           ; permitted provided that the following conditions are met:
+    25                           ; 
+    26                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    27                           ;        conditions and the following disclaimer.
+    28                           ; 
+    29                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    30                           ;        of conditions and the following disclaimer in the documentation and/or other
+    31                           ;        materials provided with the distribution.
+    32                           ; 
+    33                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    34                           ;        software without specific prior written permission.
+    35                           ; 
+    36                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    37                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    38                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    39                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    40                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    41                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    42                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    43                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    44                           ; 
+    45                           ; 
+    46                           ; Code-generator required, PIC18F27K42 Definitions
+    47                           ; 
+    48                           ; SFR Addresses
+    49  0000                     _PMD7	set	14791
+    50  0000                     _PMD6	set	14790
+    51  0000                     _PMD5	set	14789
+    52  0000                     _PMD4	set	14788
+    53  0000                     _PMD3	set	14787
+    54  0000                     _PMD2	set	14786
+    55  0000                     _PMD1	set	14785
+    56  0000                     _PMD0	set	14784
+    57  0000                     _OSCTUNE	set	14814
+    58  0000                     _OSCFRQ	set	14815
+    59  0000                     _OSCEN	set	14813
+    60  0000                     _OSCCON3	set	14811
+    61  0000                     _OSCCON1	set	14809
+    62  0000                     _SLRCONC	set	14947
+    63  0000                     _SLRCONB	set	14931
+    64  0000                     _SLRCONA	set	14915
+    65  0000                     _ODCONC	set	14946
+    66  0000                     _ODCONB	set	14930
+    67  0000                     _ODCONA	set	14914
+    68  0000                     _WPUC	set	14945
+    69  0000                     _WPUA	set	14913
+    70  0000                     _WPUB	set	14929
+    71  0000                     _WPUE	set	14977
+    72  0000                     _ANSELA	set	14912
+    73  0000                     _ANSELB	set	14928
+    74  0000                     _ANSELC	set	14944
+    75  0000                     _TRISC	set	16324
+    76  0000                     _TRISB	set	16323
+    77  0000                     _TRISA	set	16322
+    78  0000                     _LATC	set	16316
+    79  0000                     _LATB	set	16315
+    80  0000                     _LATA	set	16314
+    81                           
+    82                           ; #config settings
+    83  0000                     
+    84                           	psect	cinit
+    85  01FF6A                     __pcinit:
+    86                           	opt callstack 0
+    87  01FF6A                     start_initialization:
+    88                           	opt callstack 0
+    89  01FF6A                     __initialization:
+    90                           	opt callstack 0
+    91  01FF6A                     end_of_initialization:
+    92                           	opt callstack 0
+    93  01FF6A                     __end_of__initialization:
+    94                           	opt callstack 0
+    95  01FF6A  0100               	movlb	0
+    96  01FF6C  EFB2  F0FF         	goto	_main	;jump to C main() function
+    97                           
+    98                           	psect	cstackCOMRAM
+    99  000000                     __pcstackCOMRAM:
+   100                           	opt callstack 0
+   101  000000                     
+   102                           ; 1 bytes @ 0x0
+   103 ;;
+   104 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   105 ;;
+   106 ;; *************** function _main *****************
+   107 ;; Defined at:
+   108 ;;		line 49 in file "main.c"
+   109 ;; Parameters:    Size  Location     Type
+   110 ;;		None
+   111 ;; Auto vars:     Size  Location     Type
+   112 ;;		None
+   113 ;; Return value:  Size  Location     Type
+   114 ;;                  1    wreg      void 
+   115 ;; Registers used:
+   116 ;;		wreg, status,2, cstack
+   117 ;; Tracked objects:
+   118 ;;		On entry : 0/0
+   119 ;;		On exit  : 0/0
+   120 ;;		Unchanged: 0/0
+   121 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK2
+      +6  BANK27  BANK28  BANK29  BANK30  BANK31
+   122 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   123 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   124 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   125 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   126 ;;Total ram usage:        0 bytes
+   127 ;; Hardware stack levels required when called:    2
+   128 ;; This function calls:
+   129 ;;		_SYSTEM_Initialize
+   130 ;; This function is called by:
+   131 ;;		Startup code after reset
+   132 ;; This function uses a non-reentrant model
+   133 ;;
+   134                           
+   135                           	psect	text0
+   136  01FF64                     __ptext0:
+   137                           	opt callstack 0
+   138  01FF64                     _main:
+   139                           	opt callstack 29
+   140                           
+   141                           ;main.c: 52:     SYSTEM_Initialize();
+   142                           
+   143                           ;incstack = 0
+   144  01FF64  ECB8  F0FF         	call	_SYSTEM_Initialize	;wreg free
+   145  01FF68                     l7:
+   146                           
+   147                           ;main.c: 65:     {;main.c: 67:     }
+   148  01FF68  D7FF               	goto	l7
+   149  01FF6A                     __end_of_main:
+   150                           	opt callstack 0
+   151                           
+   152 ;; *************** function _SYSTEM_Initialize *****************
+   153 ;; Defined at:
+   154 ;;		line 50 in file "mcc_generated_files/mcc.c"
+   155 ;; Parameters:    Size  Location     Type
+   156 ;;		None
+   157 ;; Auto vars:     Size  Location     Type
+   158 ;;		None
+   159 ;; Return value:  Size  Location     Type
+   160 ;;                  1    wreg      void 
+   161 ;; Registers used:
+   162 ;;		wreg, status,2, cstack
+   163 ;; Tracked objects:
+   164 ;;		On entry : 0/0
+   165 ;;		On exit  : 0/0
+   166 ;;		Unchanged: 0/0
+   167 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK2
+      +6  BANK27  BANK28  BANK29  BANK30  BANK31
+   168 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   169 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   170 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   171 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   172 ;;Total ram usage:        0 bytes
+   173 ;; Hardware stack levels used:    1
+   174 ;; Hardware stack levels required when called:    1
+   175 ;; This function calls:
+   176 ;;		_OSCILLATOR_Initialize
+   177 ;;		_PIN_MANAGER_Initialize
+   178 ;;		_PMD_Initialize
+   179 ;; This function is called by:
+   180 ;;		_main
+   181 ;; This function uses a non-reentrant model
+   182 ;;
+   183                           
+   184                           	psect	text1
+   185  01FF70                     __ptext1:
+   186                           	opt callstack 0
+   187  01FF70                     _SYSTEM_Initialize:
+   188                           	opt callstack 29
+   189                           
+   190                           ;mcc_generated_files/mcc.c: 52:     PMD_Initialize();
+   191                           
+   192                           ;incstack = 0
+   193  01FF70  ECCB  F0FF         	call	_PMD_Initialize	;wreg free
+   194                           
+   195                           ;mcc_generated_files/mcc.c: 53:     PIN_MANAGER_Initialize();
+   196  01FF74  ECDD  F0FF         	call	_PIN_MANAGER_Initialize	;wreg free
+   197                           
+   198                           ;mcc_generated_files/mcc.c: 54:     OSCILLATOR_Initialize();
+   199  01FF78  ECBF  F0FF         	call	_OSCILLATOR_Initialize	;wreg free
+   200  01FF7C  0012               	return		;funcret
+   201  01FF7E                     __end_of_SYSTEM_Initialize:
+   202                           	opt callstack 0
+   203                           
+   204 ;; *************** function _PMD_Initialize *****************
+   205 ;; Defined at:
+   206 ;;		line 71 in file "mcc_generated_files/mcc.c"
+   207 ;; Parameters:    Size  Location     Type
+   208 ;;		None
+   209 ;; Auto vars:     Size  Location     Type
+   210 ;;		None
+   211 ;; Return value:  Size  Location     Type
+   212 ;;                  1    wreg      void 
+   213 ;; Registers used:
+   214 ;;		wreg, status,2
+   215 ;; Tracked objects:
+   216 ;;		On entry : 0/0
+   217 ;;		On exit  : 0/0
+   218 ;;		Unchanged: 0/0
+   219 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK2
+      +6  BANK27  BANK28  BANK29  BANK30  BANK31
+   220 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   221 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   222 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   223 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   224 ;;Total ram usage:        0 bytes
+   225 ;; Hardware stack levels used:    1
+   226 ;; This function calls:
+   227 ;;		Nothing
+   228 ;; This function is called by:
+   229 ;;		_SYSTEM_Initialize
+   230 ;; This function uses a non-reentrant model
+   231 ;;
+   232                           
+   233                           	psect	text2
+   234  01FF96                     __ptext2:
+   235                           	opt callstack 0
+   236  01FF96                     _PMD_Initialize:
+   237                           	opt callstack 29
+   238                           
+   239                           ;mcc_generated_files/mcc.c: 74:     PMD0 = 0x00;
+   240                           
+   241                           ;incstack = 0
+   242  01FF96  0E00               	movlw	0
+   243  01FF98  0139               	movlb	57	; () banked
+   244  01FF9A  6FC0               	movwf	192,b	;volatile
+   245                           
+   246                           ;mcc_generated_files/mcc.c: 76:     PMD1 = 0x00;
+   247  01FF9C  0E00               	movlw	0
+   248  01FF9E  6FC1               	movwf	193,b	;volatile
+   249                           
+   250                           ;mcc_generated_files/mcc.c: 78:     PMD2 = 0x00;
+   251  01FFA0  0E00               	movlw	0
+   252  01FFA2  6FC2               	movwf	194,b	;volatile
+   253                           
+   254                           ;mcc_generated_files/mcc.c: 80:     PMD3 = 0x00;
+   255  01FFA4  0E00               	movlw	0
+   256  01FFA6  6FC3               	movwf	195,b	;volatile
+   257                           
+   258                           ;mcc_generated_files/mcc.c: 82:     PMD4 = 0x00;
+   259  01FFA8  0E00               	movlw	0
+   260  01FFAA  6FC4               	movwf	196,b	;volatile
+   261                           
+   262                           ;mcc_generated_files/mcc.c: 84:     PMD5 = 0x00;
+   263  01FFAC  0E00               	movlw	0
+   264  01FFAE  6FC5               	movwf	197,b	;volatile
+   265                           
+   266                           ;mcc_generated_files/mcc.c: 86:     PMD6 = 0x00;
+   267  01FFB0  0E00               	movlw	0
+   268  01FFB2  6FC6               	movwf	198,b	;volatile
+   269                           
+   270                           ;mcc_generated_files/mcc.c: 88:     PMD7 = 0x00;
+   271  01FFB4  0E00               	movlw	0
+   272  01FFB6  6FC7               	movwf	199,b	;volatile
+   273                           
+   274                           ; BSR set to: 57
+   275  01FFB8  0012               	return		;funcret
+   276  01FFBA                     __end_of_PMD_Initialize:
+   277                           	opt callstack 0
+   278                           
+   279 ;; *************** function _PIN_MANAGER_Initialize *****************
+   280 ;; Defined at:
+   281 ;;		line 57 in file "mcc_generated_files/pin_manager.c"
+   282 ;; Parameters:    Size  Location     Type
+   283 ;;		None
+   284 ;; Auto vars:     Size  Location     Type
+   285 ;;		None
+   286 ;; Return value:  Size  Location     Type
+   287 ;;                  1    wreg      void 
+   288 ;; Registers used:
+   289 ;;		wreg, status,2
+   290 ;; Tracked objects:
+   291 ;;		On entry : 0/0
+   292 ;;		On exit  : 0/0
+   293 ;;		Unchanged: 0/0
+   294 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK2
+      +6  BANK27  BANK28  BANK29  BANK30  BANK31
+   295 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   296 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   297 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   298 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   299 ;;Total ram usage:        0 bytes
+   300 ;; Hardware stack levels used:    1
+   301 ;; This function calls:
+   302 ;;		Nothing
+   303 ;; This function is called by:
+   304 ;;		_SYSTEM_Initialize
+   305 ;; This function uses a non-reentrant model
+   306 ;;
+   307                           
+   308                           	psect	text3
+   309  01FFBA                     __ptext3:
+   310                           	opt callstack 0
+   311  01FFBA                     _PIN_MANAGER_Initialize:
+   312                           	opt callstack 29
+   313                           
+   314                           ;mcc_generated_files/pin_manager.c: 62:     LATA = 0x00;
+   315                           
+   316                           ; BSR set to: 57
+   317                           ;incstack = 0
+   318  01FFBA  0E00               	movlw	0
+   319  01FFBC  6EBA               	movwf	16314,c	;volatile
+   320                           
+   321                           ;mcc_generated_files/pin_manager.c: 63:     LATB = 0x00;
+   322  01FFBE  0E00               	movlw	0
+   323  01FFC0  6EBB               	movwf	16315,c	;volatile
+   324                           
+   325                           ;mcc_generated_files/pin_manager.c: 64:     LATC = 0x00;
+   326  01FFC2  0E00               	movlw	0
+   327  01FFC4  6EBC               	movwf	16316,c	;volatile
+   328                           
+   329                           ;mcc_generated_files/pin_manager.c: 69:     TRISA = 0x00;
+   330  01FFC6  0E00               	movlw	0
+   331  01FFC8  6EC2               	movwf	16322,c	;volatile
+   332                           
+   333                           ;mcc_generated_files/pin_manager.c: 70:     TRISB = 0xFF;
+   334  01FFCA  68C3               	setf	16323,c	;volatile
+   335                           
+   336                           ;mcc_generated_files/pin_manager.c: 71:     TRISC = 0xFF;
+   337  01FFCC  68C4               	setf	16324,c	;volatile
+   338                           
+   339                           ;mcc_generated_files/pin_manager.c: 76:     ANSELC = 0xFF;
+   340  01FFCE  013A               	movlb	58	; () banked
+   341  01FFD0  6960               	setf	96,b	;volatile
+   342                           
+   343                           ;mcc_generated_files/pin_manager.c: 77:     ANSELB = 0x00;
+   344  01FFD2  0E00               	movlw	0
+   345  01FFD4  6F50               	movwf	80,b	;volatile
+   346                           
+   347                           ; BSR set to: 58
+   348                           ;mcc_generated_files/pin_manager.c: 78:     ANSELA = 0xFF;
+   349  01FFD6  6940               	setf	64,b	;volatile
+   350                           
+   351                           ;mcc_generated_files/pin_manager.c: 83:     WPUE = 0x00;
+   352  01FFD8  0E00               	movlw	0
+   353  01FFDA  6F81               	movwf	129,b	;volatile
+   354                           
+   355                           ;mcc_generated_files/pin_manager.c: 84:     WPUB = 0x00;
+   356  01FFDC  0E00               	movlw	0
+   357  01FFDE  6F51               	movwf	81,b	;volatile
+   358                           
+   359                           ;mcc_generated_files/pin_manager.c: 85:     WPUA = 0x00;
+   360  01FFE0  0E00               	movlw	0
+   361  01FFE2  6F41               	movwf	65,b	;volatile
+   362                           
+   363                           ;mcc_generated_files/pin_manager.c: 86:     WPUC = 0x00;
+   364  01FFE4  0E00               	movlw	0
+   365  01FFE6  6F61               	movwf	97,b	;volatile
+   366                           
+   367                           ;mcc_generated_files/pin_manager.c: 91:     ODCONA = 0x00;
+   368  01FFE8  0E00               	movlw	0
+   369  01FFEA  6F42               	movwf	66,b	;volatile
+   370                           
+   371                           ;mcc_generated_files/pin_manager.c: 92:     ODCONB = 0x00;
+   372  01FFEC  0E00               	movlw	0
+   373  01FFEE  6F52               	movwf	82,b	;volatile
+   374                           
+   375                           ;mcc_generated_files/pin_manager.c: 93:     ODCONC = 0x00;
+   376  01FFF0  0E00               	movlw	0
+   377  01FFF2  6F62               	movwf	98,b	;volatile
+   378                           
+   379                           ; BSR set to: 58
+   380                           ;mcc_generated_files/pin_manager.c: 98:     SLRCONA = 0xFF;
+   381  01FFF4  6943               	setf	67,b	;volatile
+   382                           
+   383                           ; BSR set to: 58
+   384                           ;mcc_generated_files/pin_manager.c: 99:     SLRCONB = 0xFF;
+   385  01FFF6  6953               	setf	83,b	;volatile
+   386                           
+   387                           ; BSR set to: 58
+   388                           ;mcc_generated_files/pin_manager.c: 100:     SLRCONC = 0xFF;
+   389  01FFF8  6963               	setf	99,b	;volatile
+   390                           
+   391                           ; BSR set to: 58
+   392  01FFFA  0012               	return		;funcret
+   393  01FFFC                     __end_of_PIN_MANAGER_Initialize:
+   394                           	opt callstack 0
+   395                           
+   396 ;; *************** function _OSCILLATOR_Initialize *****************
+   397 ;; Defined at:
+   398 ;;		line 57 in file "mcc_generated_files/mcc.c"
+   399 ;; Parameters:    Size  Location     Type
+   400 ;;		None
+   401 ;; Auto vars:     Size  Location     Type
+   402 ;;		None
+   403 ;; Return value:  Size  Location     Type
+   404 ;;                  1    wreg      void 
+   405 ;; Registers used:
+   406 ;;		wreg, status,2
+   407 ;; Tracked objects:
+   408 ;;		On entry : 0/0
+   409 ;;		On exit  : 0/0
+   410 ;;		Unchanged: 0/0
+   411 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK2
+      +6  BANK27  BANK28  BANK29  BANK30  BANK31
+   412 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   413 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   414 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   415 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0
+   416 ;;Total ram usage:        0 bytes
+   417 ;; Hardware stack levels used:    1
+   418 ;; This function calls:
+   419 ;;		Nothing
+   420 ;; This function is called by:
+   421 ;;		_SYSTEM_Initialize
+   422 ;; This function uses a non-reentrant model
+   423 ;;
+   424                           
+   425                           	psect	text4
+   426  01FF7E                     __ptext4:
+   427                           	opt callstack 0
+   428  01FF7E                     _OSCILLATOR_Initialize:
+   429                           	opt callstack 29
+   430                           
+   431                           ;mcc_generated_files/mcc.c: 60:     OSCCON1 = 0x60;
+   432                           
+   433                           ; BSR set to: 58
+   434                           ;incstack = 0
+   435  01FF7E  0E60               	movlw	96
+   436  01FF80  0139               	movlb	57	; () banked
+   437  01FF82  6FD9               	movwf	217,b	;volatile
+   438                           
+   439                           ;mcc_generated_files/mcc.c: 62:     OSCCON3 = 0x00;
+   440  01FF84  0E00               	movlw	0
+   441  01FF86  6FDB               	movwf	219,b	;volatile
+   442                           
+   443                           ;mcc_generated_files/mcc.c: 64:     OSCEN = 0x00;
+   444  01FF88  0E00               	movlw	0
+   445  01FF8A  6FDD               	movwf	221,b	;volatile
+   446                           
+   447                           ;mcc_generated_files/mcc.c: 66:     OSCFRQ = 0x08;
+   448  01FF8C  0E08               	movlw	8
+   449  01FF8E  6FDF               	movwf	223,b	;volatile
+   450                           
+   451                           ;mcc_generated_files/mcc.c: 68:     OSCTUNE = 0x00;
+   452  01FF90  0E00               	movlw	0
+   453  01FF92  6FDE               	movwf	222,b	;volatile
+   454                           
+   455                           ; BSR set to: 57
+   456  01FF94  0012               	return		;funcret
+   457  01FF96                     __end_of_OSCILLATOR_Initialize:
+   458                           	opt callstack 0
+   459  0000                     
+   460                           	psect	rparam
+   461  0000                     tosu	equ	0x3FFF
+   462                           tosh	equ	0x3FFE
+   463                           tosl	equ	0x3FFD
+   464                           stkptr	equ	0x3FFC
+   465                           pclatu	equ	0x3FFB
+   466                           pclath	equ	0x3FFA
+   467                           pcl	equ	0x3FF9
+   468                           tblptru	equ	0x3FF8
+   469                           tblptrh	equ	0x3FF7
+   470                           tblptrl	equ	0x3FF6
+   471                           tablat	equ	0x3FF5
+   472                           prodh	equ	0x3FF4
+   473                           prodl	equ	0x3FF3
+   474                           indf0	equ	0x3FEF
+   475                           postinc0	equ	0x3FEE
+   476                           postdec0	equ	0x3FED
+   477                           preinc0	equ	0x3FEC
+   478                           plusw0	equ	0x3FEB
+   479                           fsr0h	equ	0x3FEA
+   480                           fsr0l	equ	0x3FE9
+   481                           wreg	equ	0x3FE8
+   482                           indf1	equ	0x3FE7
+   483                           postinc1	equ	0x3FE6
+   484                           postdec1	equ	0x3FE5
+   485                           preinc1	equ	0x3FE4
+   486                           plusw1	equ	0x3FE3
+   487                           fsr1h	equ	0x3FE2
+   488                           fsr1l	equ	0x3FE1
+   489                           bsr	equ	0x3FE0
+   490                           indf2	equ	0x3FDF
+   491                           postinc2	equ	0x3FDE
+   492                           postdec2	equ	0x3FDD
+   493                           preinc2	equ	0x3FDC
+   494                           plusw2	equ	0x3FDB
+   495                           fsr2h	equ	0x3FDA
+   496                           fsr2l	equ	0x3FD9
+   497                           status	equ	0x3FD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      0       0
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+    BANK8           256      0       0
+    BANK9           256      0       0
+    BANK10          256      0       0
+    BANK11          256      0       0
+    BANK12          256      0       0
+    BANK13          256      0       0
+    BANK14          256      0       0
+    BANK15          256      0       0
+    BANK16          256      0       0
+    BANK17          256      0       0
+    BANK18          256      0       0
+    BANK19          256      0       0
+    BANK20          256      0       0
+    BANK21          256      0       0
+    BANK22          256      0       0
+    BANK23          256      0       0
+    BANK24          256      0       0
+    BANK25          256      0       0
+    BANK26          256      0       0
+    BANK27          256      0       0
+    BANK28          256      0       0
+    BANK29          256      0       0
+    BANK30          256      0       0
+    BANK31          256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Critical Paths under _main in BANK13
+
+    None.
+
+Critical Paths under _main in BANK14
+
+    None.
+
+Critical Paths under _main in BANK15
+
+    None.
+
+Critical Paths under _main in BANK16
+
+    None.
+
+Critical Paths under _main in BANK17
+
+    None.
+
+Critical Paths under _main in BANK18
+
+    None.
+
+Critical Paths under _main in BANK19
+
+    None.
+
+Critical Paths under _main in BANK20
+
+    None.
+
+Critical Paths under _main in BANK21
+
+    None.
+
+Critical Paths under _main in BANK22
+
+    None.
+
+Critical Paths under _main in BANK23
+
+    None.
+
+Critical Paths under _main in BANK24
+
+    None.
+
+Critical Paths under _main in BANK25
+
+    None.
+
+Critical Paths under _main in BANK26
+
+    None.
+
+Critical Paths under _main in BANK27
+
+    None.
+
+Critical Paths under _main in BANK28
+
+    None.
+
+Critical Paths under _main in BANK29
+
+    None.
+
+Critical Paths under _main in BANK30
+
+    None.
+
+Critical Paths under _main in BANK31
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                  _SYSTEM_Initialize
+ ---------------------------------------------------------------------------------
+ (1) _SYSTEM_Initialize                                    0     0      0       0
+              _OSCILLATOR_Initialize
+             _PIN_MANAGER_Initialize
+                     _PMD_Initialize
+ ---------------------------------------------------------------------------------
+ (2) _PMD_Initialize                                       0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _PIN_MANAGER_Initialize                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _OSCILLATOR_Initialize                                0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _SYSTEM_Initialize
+     _OSCILLATOR_Initialize
+     _PIN_MANAGER_Initialize
+     _PMD_Initialize
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             400      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      0       0       1        0.0%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK8           100      0       0      20        0.0%
+BANK8              100      0       0      21        0.0%
+BITBANK9           100      0       0      22        0.0%
+BANK9              100      0       0      23        0.0%
+BITBANK10          100      0       0      24        0.0%
+BANK10             100      0       0      25        0.0%
+BITBANK11          100      0       0      26        0.0%
+BANK11             100      0       0      27        0.0%
+BITBANK12          100      0       0      28        0.0%
+BANK12             100      0       0      29        0.0%
+BITBANK13          100      0       0      30        0.0%
+BANK13             100      0       0      31        0.0%
+BITBANK14          100      0       0      32        0.0%
+BANK14             100      0       0      33        0.0%
+BITBANK15          100      0       0      34        0.0%
+BANK15             100      0       0      35        0.0%
+BITBANK16          100      0       0      36        0.0%
+BANK16             100      0       0      37        0.0%
+BITBANK17          100      0       0      38        0.0%
+BANK17             100      0       0      39        0.0%
+BITBANK18          100      0       0      40        0.0%
+BANK18             100      0       0      41        0.0%
+BITBANK19          100      0       0      42        0.0%
+BANK19             100      0       0      43        0.0%
+BITBANK20          100      0       0      44        0.0%
+BANK20             100      0       0      45        0.0%
+BITBANK21          100      0       0      46        0.0%
+BANK21             100      0       0      47        0.0%
+BITBANK22          100      0       0      48        0.0%
+BANK22             100      0       0      49        0.0%
+BITBANK23          100      0       0      50        0.0%
+BANK23             100      0       0      51        0.0%
+BITBANK24          100      0       0      52        0.0%
+BANK24             100      0       0      53        0.0%
+BITBANK25          100      0       0      54        0.0%
+BANK25             100      0       0      55        0.0%
+BITBANK26          100      0       0      56        0.0%
+BANK26             100      0       0      57        0.0%
+ABS                  0      0       0      58        0.0%
+BITBANK27          100      0       0      59        0.0%
+BANK27             100      0       0      60        0.0%
+BITBANK28          100      0       0      61        0.0%
+BANK28             100      0       0      62        0.0%
+BITBANK29          100      0       0      63        0.0%
+BANK29             100      0       0      64        0.0%
+BITBANK30          100      0       0      65        0.0%
+BANK30             100      0       0      66        0.0%
+BITBANK31          100      0       0      67        0.0%
+BANK31             100      0       0      68        0.0%
+BIGRAM            1FFF      0       0      69        0.0%
+BITSFR_8             0      0       0     200        0.0%
+SFR_8                0      0       0     200        0.0%
+BITSFR_7             0      0       0     200        0.0%
+SFR_7                0      0       0     200        0.0%
+BITSFR_6             0      0       0     200        0.0%
+SFR_6                0      0       0     200        0.0%
+BITSFR_5             0      0       0     200        0.0%
+SFR_5                0      0       0     200        0.0%
+BITSFR_4             0      0       0     200        0.0%
+SFR_4                0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.05 build -831301201 
+Symbol Table                                                                                   Wed Feb 06 16:02:42 2019
+
+                              l7 FF68                      __CFG_CP$OFF 000000  
+                    __CFG_LVP$ON 000000          __size_of_PMD_Initialize 0024  
+                  __CFG_BBEN$OFF 000000                     __CFG_ZCD$OFF 000000  
+                           _LATA 003FBA                             _LATB 003FBB  
+                           _LATC 003FBC                             _PMD0 0039C0  
+                           _PMD1 0039C1                             _PMD2 0039C2  
+                           _PMD3 0039C3                             _PMD4 0039C4  
+                           _PMD5 0039C5                             _PMD6 0039C6  
+                           _PMD7 0039C7                             _WPUA 003A41  
+                           _WPUB 003A51                             _WPUC 003A61  
+                           _WPUE 003A81                    __CFG_FCMEN$ON 000000  
+                           _main FF64                             start FFFC  
+                  __CFG_CSWEN$ON 000000                     ___param_bank 000000  
+ __size_of_OSCILLATOR_Initialize 0018    __end_of_OSCILLATOR_Initialize FF96  
+                          ?_main 0000                    __CFG_WDTE$OFF 000000  
+                 __CFG_DEBUG$OFF 000000                            _OSCEN 0039DD  
+                          _TRISA 003FC2                            _TRISB 003FC3  
+                          _TRISC 003FC4                    __CFG_WRTB$OFF 000000  
+                  __CFG_WRTC$OFF 000000                    __CFG_WRTD$OFF 000000  
+             __CFG_MCLRE$EXTMCLR 000000                  __initialization FF6A  
+                   __end_of_main FF6A                   __CFG_SAFEN$OFF 000000  
+                         ??_main 0000                   __CFG_PR1WAY$ON 000000  
+                  __activetblptr 000000                           _ANSELA 003A40  
+                         _ANSELB 003A50                           _ANSELC 003A60  
+                         _ODCONA 003A42                           _ODCONB 003A52  
+                         _ODCONC 003A62                   __CFG_WDTCCS$SC 000000  
+                         _OSCFRQ 0039DF                   __CFG_XINST$OFF 000000  
+                 __CFG_STVREN$ON 000000                   _PMD_Initialize FF96  
+              _SYSTEM_Initialize FF70                       __accesstop 0060  
+        __end_of__initialization FF6A               ?_SYSTEM_Initialize 0000  
+                  ___rparam_used 000001                   __pcstackCOMRAM 0000  
+            ??_SYSTEM_Initialize 0000           __end_of_PMD_Initialize FFBA  
+      __end_of_SYSTEM_Initialize FF7E                  __CFG_IVT1WAY$ON 000000  
+                __CFG_MVECEN$OFF 000000                  __CFG_PPS1WAY$ON 000000  
+                ?_PMD_Initialize 0000              __CFG_PWRTS$PWRT_OFF 000000  
+                        _OSCCON1 0039D9                          _OSCCON3 0039DB  
+                        _OSCTUNE 0039DE                          _SLRCONA 003A43  
+                        _SLRCONB 003A53                          _SLRCONC 003A63  
+                        __Hparam 0000                          __Lparam 0000  
+     __CFG_RSTOSC$HFINTOSC_64MHZ 000000                          __pcinit FF6A  
+                        __ramtop 2000                          __ptext0 FF64  
+                        __ptext1 FF70                          __ptext2 FF96  
+                        __ptext3 FFBA                          __ptext4 FF7E  
+                __CFG_WRTAPP$OFF 000000            _OSCILLATOR_Initialize FF7E  
+       ??_PIN_MANAGER_Initialize 0000                  __CFG_WRTSAF$OFF 000000  
+     __size_of_SYSTEM_Initialize 000E             end_of_initialization FF6A  
+          __CFG_WDTCPS$WDTCPS_31 000000                 __CFG_FEXTOSC$OFF 000000  
+         ?_OSCILLATOR_Initialize 0000              start_initialization FF6A  
+__size_of_PIN_MANAGER_Initialize 0042                 __CFG_LPBOREN$OFF 000000  
+               ??_PMD_Initialize 0000           _PIN_MANAGER_Initialize FFBA  
+         __CFG_BBSIZE$BBSIZE_512 000000              __CFG_BORV$VBOR_2P45 000000  
+                       __Hrparam 0000                         __Lrparam 0000  
+             __CFG_BOREN$SBORDIS 000000          ??_OSCILLATOR_Initialize 0000  
+                  __size_of_main 0006             __CFG_WDTCWS$WDTCWS_7 000000  
+        ?_PIN_MANAGER_Initialize 0000                __CFG_CLKOUTEN$OFF 000000  
+ __end_of_PIN_MANAGER_Initialize FFFC  
