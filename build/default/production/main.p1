@@ -2142,13 +2142,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "65
 [; ;main.c: 65:     {
 {
-"67
-[; ;main.c: 67:     }
+"68
+[; ;main.c: 68:     }
 }
 [e :U 2134 ]
 [e $U 2135  ]
 [e :U 2136 ]
-"68
-[; ;main.c: 68: }
+"69
+[; ;main.c: 69: }
 [e :UE 2133 ]
 }

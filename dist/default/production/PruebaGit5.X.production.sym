@@ -286,7 +286,7 @@ text0 1FF64 1FF69 CODE 1FF64 0
 %locals
 dist/default/production\PruebaGit5.X.production.o
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f27k42.h
-C:\Users\Martin\AppData\Local\Temp\s3k4.
+C:\Users\Martin\AppData\Local\Temp\sb98.
 4488 1FF6A 0 CODE 0
 4490 1FF6A 0 CODE 0
 4493 1FF6A 0 CODE 0
@@ -297,7 +297,7 @@ main.c
 49 1FF64 0 CODE 0
 52 1FF64 0 CODE 0
 64 1FF68 0 CODE 0
-67 1FF68 0 CODE 0
+68 1FF68 0 CODE 0
 mcc_generated_files/mcc.c
 50 1FF70 0 CODE 0
 52 1FF70 0 CODE 0
