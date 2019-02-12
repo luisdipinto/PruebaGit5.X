@@ -16,8 +16,11 @@ void main(void)
     // Disable the Global Interrupts
     //INTERRUPT_GlobalInterruptDisable();
 
+    IO_RB1_TRIS = 0; // lo defino como salida
+    
     while (1)
     {
+        IO_RB1_LAT = 1; // enciendo la salida
         // Add your application code
         // nuevo comentario
         //Vamo a pushar todo
